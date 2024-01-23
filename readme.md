@@ -1,4 +1,4 @@
-# Prova BonifiQ Backend k
+# Prova BonifiQ Backend
 Olá!
 Essa prova foi criada para testar suas habilidades com .NET e C# em geral. 
 Por favor, siga atentamente as instruções antes de começar, ok?
