@@ -1,4 +1,5 @@
-﻿using ProvaPub.Models;
+﻿using Microsoft.Extensions.WebEncoders.Testing;
+using ProvaPub.Models;
 using ProvaPub.Repository;
 
 namespace ProvaPub.Services
@@ -10,9 +11,9 @@ namespace ProvaPub.Services
 		public ProductService(TestDbContext ctx)
 		{
 			_ctx = ctx;
-		}
+        }
 
-		public ProductList  ListProducts(int page)
+		public ProductList ListProducts(int page)
 		{
 			return new ProductList() {  HasNext=false, TotalCount =10, Products = _ctx.Products.ToList().GetRange((page - 1)*10,10)};
 		}
