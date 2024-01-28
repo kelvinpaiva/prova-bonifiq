@@ -8,33 +8,11 @@ namespace ProvaPub.Services
 	{
 		public async Task<Order> PayOrder(string paymentMethod, decimal paymentValue, int customerId)
 		{
-            string objectToInstantiate = "ProvaPub.Services.PaymentType."+ paymentMethod +", ProvaPub";
+            string objectToInstantiate = "ProvaPub.Services.PaymentType."+ paymentMethod.Trim().ToLower() +", ProvaPub";
             var objectType = Type.GetType(objectToInstantiate);
             dynamic instantiatedObject = Activator.CreateInstance(objectType);
 
 			return instantiatedObject.Pagamento(paymentValue, customerId);
-
-            
-			//Payment payment = new t();
-
-            //return await t.PayOrder(paymentMethod, paymentValue, customerId);
-			if (paymentMethod == "pix")
-			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "creditcard")
-			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "paypal")
-			{
-				//Faz pagamento...
-			}
-
-			return await Task.FromResult( new Order()
-			{
-				Value = paymentValue
-			});
 		}
 	}
 }
