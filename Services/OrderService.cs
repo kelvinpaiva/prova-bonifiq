@@ -10,9 +10,11 @@ namespace ProvaPub.Services
 		{
             string objectToInstantiate = "ProvaPub.Services.PaymentType."+ paymentMethod.Trim().ToLower() +", ProvaPub";
             var objectType = Type.GetType(objectToInstantiate);
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             dynamic instantiatedObject = Activator.CreateInstance(objectType);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-			return instantiatedObject.Pagamento(paymentValue, customerId);
+            return await instantiatedObject.Pagamento(paymentValue, customerId);
 		}
 	}
 }

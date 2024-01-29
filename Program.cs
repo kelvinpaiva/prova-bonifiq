@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProvaPub.Interface;
 using ProvaPub.Repository;
 using ProvaPub.Services;
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<RandomService>();
 builder.Services.AddTransient<CustomerService>();
 builder.Services.AddTransient<ProductService>();
+builder.Services.AddTransient<ICustomerService,CustomerService>();
 builder.Services.AddDbContext<TestDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("ctx")));
 var app = builder.Build();
